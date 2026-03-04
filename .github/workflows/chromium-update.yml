@@ -52,8 +52,6 @@ jobs:
 
           VERSION="$MAJOR.$MINOR.$BUILD.$PATCH"
 
-          echo "Detected version: $VERSION"
-
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Read current commit
@@ -67,7 +65,7 @@ jobs:
 
           echo "current=$CURRENT" >> $GITHUB_OUTPUT
 
-      - name: Update metadata
+      - name: Update metadata if commit changed
         if: steps.chromium.outputs.commit != steps.current.outputs.current
         run: |
           mkdir -p artifacts/latest
@@ -82,12 +80,16 @@ jobs:
           }
           EOF
 
-      - name: Commit update
-        if: steps.chromium.outputs.commit != steps.current.outputs.current
+      - name: Commit results
         run: |
           git config user.name "chromium-bot"
           git config user.email "actions@github.com"
 
-          git add artifacts/latest/build.json
-          git commit -m "Chromium ${{ steps.version.outputs.version }} update"
+          if [ "${{ steps.chromium.outputs.commit }}" != "${{ steps.current.outputs.current }}" ]; then
+            git add artifacts/latest/build.json
+            git commit -m "Chromium ${{ steps.version.outputs.version }} update"
+          else
+            git commit --allow-empty -m "No chromium update found"
+          fi
+
           git push
