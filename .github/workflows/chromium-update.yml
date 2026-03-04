@@ -1,74 +1,74 @@
 name: Chromium Update Tracker
 
 on:
-schedule:
-- cron: "*/15 * * * *"
-workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
 
 permissions:
-contents: write
+  contents: write
 
 jobs:
-check-chromium:
-runs-on: ubuntu-latest
+  check-chromium:
+    runs-on: ubuntu-latest
 
-steps:
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-  - name: Checkout repository
-    uses: actions/checkout@v4
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq curl
 
-  - name: Install tools
-    run: |
-      sudo apt-get update
-      sudo apt-get install -y jq curl
+      - name: Fetch latest Chromium commit
+        id: chromium
+        run: |
+          DATA=$(curl -s https://chromium.googlesource.com/chromium/src/+log/main?format=JSON)
+          CLEAN=$(echo "$DATA" | sed '1d')
 
-  - name: Fetch latest Chromium commit
-    id: chromium
-    run: |
-      DATA=$(curl -s https://chromium.googlesource.com/chromium/src/+log/main?format=JSON)
-      CLEAN=$(echo "$DATA" | sed '1d')
-      COMMIT=$(echo "$CLEAN" | jq -r '.log[0].commit')
-      AUTHOR=$(echo "$CLEAN" | jq -r '.log[0].author')
-      DATE=$(echo "$CLEAN" | jq -r '.log[0].committer.time')
+          COMMIT=$(echo "$CLEAN" | jq -r '.log[0].commit')
+          AUTHOR=$(echo "$CLEAN" | jq -r '.log[0].author')
+          DATE=$(echo "$CLEAN" | jq -r '.log[0].committer.time')
 
-      echo "commit=$COMMIT" >> $GITHUB_OUTPUT
-      echo "author=$AUTHOR" >> $GITHUB_OUTPUT
-      echo "date=$DATE" >> $GITHUB_OUTPUT
+          echo "commit=$COMMIT" >> $GITHUB_OUTPUT
+          echo "author=$AUTHOR" >> $GITHUB_OUTPUT
+          echo "date=$DATE" >> $GITHUB_OUTPUT
 
-  - name: Read existing commit
-    id: current
-    run: |
-      if [ -f artifacts/latest/build.json ]; then
-        CURRENT=$(jq -r '.commit' artifacts/latest/build.json)
-      else
-        CURRENT=""
-      fi
+      - name: Read existing commit
+        id: current
+        run: |
+          if [ -f artifacts/latest/build.json ]; then
+            CURRENT=$(jq -r '.commit' artifacts/latest/build.json)
+          else
+            CURRENT=""
+          fi
 
-      echo "current=$CURRENT" >> $GITHUB_OUTPUT
+          echo "current=$CURRENT" >> $GITHUB_OUTPUT
 
-  - name: Update metadata
-    if: steps.chromium.outputs.commit != steps.current.outputs.current
-    run: |
-      mkdir -p artifacts/latest
+      - name: Update metadata
+        if: steps.chromium.outputs.commit != steps.current.outputs.current
+        run: |
+          mkdir -p artifacts/latest
 
-      cat <<EOF > artifacts/latest/build.json
-      {
-        "version": "chromium-nightly",
-        "commit": "${{ steps.chromium.outputs.commit }}",
-        "author": "${{ steps.chromium.outputs.author }}",
-        "commit_time": "${{ steps.chromium.outputs.date }}",
-        "status": "new"
-      }
-      EOF
+          cat <<EOF > artifacts/latest/build.json
+          {
+            "version": "chromium-nightly",
+            "commit": "${{ steps.chromium.outputs.commit }}",
+            "author": "${{ steps.chromium.outputs.author }}",
+            "commit_time": "${{ steps.chromium.outputs.date }}",
+            "status": "new"
+          }
+          EOF
 
-  - name: Commit update
-    if: steps.chromium.outputs.commit != steps.current.outputs.current
-    run: |
-      git config user.name "chromium-bot"
-      git config user.email "actions@github.com"
+      - name: Commit update
+        if: steps.chromium.outputs.commit != steps.current.outputs.current
+        run: |
+          git config user.name "chromium-bot"
+          git config user.email "actions@github.com"
 
-      git add artifacts/latest/build.json
+          git add artifacts/latest/build.json
 
-      git commit -m "Update Chromium commit ${{ steps.chromium.outputs.commit }}" || exit 0
+          git commit -m "Update Chromium commit ${{ steps.chromium.outputs.commit }}" || exit 0
 
-      git push
+          git push
