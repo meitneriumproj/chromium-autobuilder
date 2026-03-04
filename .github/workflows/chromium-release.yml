@@ -1,16 +1,14 @@
 name: Chromium Release
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "artifacts/latest/build.json"
+  workflow_run:
+    workflows: ["Chromium Update Tracker"]
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
   contents: write
-  actions: write
 
 concurrency:
   group: chromium-release
@@ -18,6 +16,7 @@ concurrency:
 
 jobs:
   release:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -27,47 +26,42 @@ jobs:
       - name: Install tools
         run: |
           sudo apt update
-          sudo apt install -y jq curl unzip
+          sudo apt install -y jq curl unzip gh
 
-      # Read metadata
-      - name: Read build metadata
+      # Read metadata from build.json
+      - name: Read metadata
         id: meta
         run: |
           VERSION=$(jq -r '.version' artifacts/latest/build.json)
           COMMIT=$(jq -r '.commit' artifacts/latest/build.json)
+          AUTHOR=$(jq -r '.author' artifacts/latest/build.json)
+          TIME=$(jq -r '.commit_time' artifacts/latest/build.json)
 
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "commit=$COMMIT" >> $GITHUB_OUTPUT
+          echo "author=$AUTHOR" >> $GITHUB_OUTPUT
+          echo "time=$TIME" >> $GITHUB_OUTPUT
 
-      # Get latest release commit
-      - name: Get latest release commit
-        id: latest
+      # Check latest release commit
+      - name: Check latest release
+        id: check
         run: |
-          LATEST=$(gh release view --json body -q '.body' 2>/dev/null | grep -o '[a-f0-9]\{40\}' | head -n1 || echo "")
+          LAST=$(gh release view --json body -q '.body' 2>/dev/null | grep -o '[a-f0-9]\{40\}' | head -n1 || echo "")
 
-          echo "latest=$LATEST" >> $GITHUB_OUTPUT
+          echo "latest=$LAST" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Compare commits
-      - name: Compare commits
-        id: compare
-        run: |
-          if [ "${{ steps.meta.outputs.commit }}" = "${{ steps.latest.outputs.latest }}" ]; then
-            echo "same=true" >> $GITHUB_OUTPUT
-          else
-            echo "same=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Stop if commit unchanged
-        if: steps.compare.outputs.same == 'true'
+      # Stop if commit already released
+      - name: Skip if already released
+        if: steps.meta.outputs.commit == steps.check.outputs.latest
         run: |
           echo "Commit already released. Skipping."
           exit 0
 
-      # Get Chromium snapshot versions
+      # Fetch Chromium snapshot versions
       - name: Get snapshot versions
-        id: snapshot
+        id: snap
         run: |
           LINUX=$(curl -s https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/LAST_CHANGE)
           MAC=$(curl -s https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac/LAST_CHANGE)
@@ -77,22 +71,23 @@ jobs:
           echo "mac=$MAC" >> $GITHUB_OUTPUT
           echo "win=$WIN" >> $GITHUB_OUTPUT
 
-      # Download builds
+      # Download Chromium builds
       - name: Download Linux build
         run: |
           curl -L -o chromium-linux.zip \
-          https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/${{ steps.snapshot.outputs.linux }}/chrome-linux.zip
+          https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/${{ steps.snap.outputs.linux }}/chrome-linux.zip
 
       - name: Download macOS build
         run: |
           curl -L -o chromium-macos.zip \
-          https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac/${{ steps.snapshot.outputs.mac }}/chrome-mac.zip
+          https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac/${{ steps.snap.outputs.mac }}/chrome-mac.zip
 
       - name: Download Windows build
         run: |
           curl -L -o chromium-win.zip \
-          https://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/${{ steps.snapshot.outputs.win }}/chrome-win.zip
+          https://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/${{ steps.snap.outputs.win }}/chrome-win.zip
 
+      # Prepare release files
       - name: Prepare artifacts
         run: |
           mkdir release
@@ -100,16 +95,18 @@ jobs:
           mv chromium-macos.zip release/
           mv chromium-win.zip release/
 
-      # Create release
-      - name: Create GitHub release
+      # Publish release
+      - name: Create release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: chromium-${{ steps.meta.outputs.version }}
-          name: Chromium ${{ steps.meta.outputs.version }}
+          name: Chromium ${{ steps.meta.outputs.version }} ${{ steps.meta.outputs.commit }}
           body: |
             Chromium ${{ steps.meta.outputs.version }}
 
             Commit: ${{ steps.meta.outputs.commit }}
+            Author: ${{ steps.meta.outputs.author }}
+            Commit Time: ${{ steps.meta.outputs.time }}
 
             Platforms:
             - Linux
