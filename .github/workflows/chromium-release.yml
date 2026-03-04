@@ -1,148 +1,109 @@
 name: Chromium Nightly Release
 
 on:
-  schedule:
-    - cron: "0 3 * * *"   # once per day (03:00 UTC)
-  workflow_dispatch:
   push:
     paths:
       - "artifacts/latest/build.json"
+  workflow_dispatch:
 
 permissions:
   contents: write
 
-# Prevent multiple builds at the same time
 concurrency:
-  group: chromium-build
+  group: chromium-release
   cancel-in-progress: false
 
 jobs:
-
-  build:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-
-    runs-on: ${{ matrix.os }}
+  release:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies (Linux)
-        if: runner.os == 'Linux'
+      - name: Install tools
         run: |
           sudo apt update
-          sudo apt install -y git python3 ninja-build clang jq curl ccache
+          sudo apt install -y jq curl unzip
 
-      - name: Install dependencies (macOS)
-        if: runner.os == 'macOS'
-        run: |
-          brew install ninja jq ccache
-
-      - name: Install dependencies (Windows)
-        if: runner.os == 'Windows'
-        run: |
-          choco install ninja jq -y
-
+      # Read commit info
       - name: Read build metadata
         id: meta
-        shell: bash
         run: |
           COMMIT=$(jq -r '.commit' artifacts/latest/build.json)
-          echo "commit=$COMMIT" >> "$GITHUB_OUTPUT"
+          AUTHOR=$(jq -r '.author' artifacts/latest/build.json)
+          DATE=$(jq -r '.commit_time' artifacts/latest/build.json)
 
+          echo "commit=$COMMIT" >> $GITHUB_OUTPUT
+          echo "author=$AUTHOR" >> $GITHUB_OUTPUT
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+
+      # Prevent duplicate releases
       - name: Check if release already exists
-        id: release_check
-        shell: bash
+        id: check
         run: |
           TAG="chromium-${{ steps.meta.outputs.commit }}"
           EXISTS=$(gh release view "$TAG" --repo ${{ github.repository }} >/dev/null 2>&1 && echo "yes" || echo "no")
-          echo "exists=$EXISTS" >> "$GITHUB_OUTPUT"
+          echo "exists=$EXISTS" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Stop if release exists
-        if: steps.release_check.outputs.exists == 'yes'
+        if: steps.check.outputs.exists == 'yes'
         run: |
-          echo "Release already exists, skipping build."
+          echo "Release already exists. Skipping."
           exit 0
 
-      - name: Install depot_tools
-        shell: bash
+      # Get latest snapshot numbers
+      - name: Fetch Chromium snapshot versions
+        id: snapshot
         run: |
-          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-          echo "$PWD/depot_tools" >> $GITHUB_PATH
+          LINUX=$(curl -s https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/LAST_CHANGE)
+          MAC=$(curl -s https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac/LAST_CHANGE)
+          WIN=$(curl -s https://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/LAST_CHANGE)
 
-      - name: Fetch Chromium
-        shell: bash
+          echo "linux=$LINUX" >> $GITHUB_OUTPUT
+          echo "mac=$MAC" >> $GITHUB_OUTPUT
+          echo "win=$WIN" >> $GITHUB_OUTPUT
+
+      # Download builds
+      - name: Download Linux build
         run: |
-          fetch --nohooks chromium
-          cd src
-          git fetch --depth 1 origin ${{ steps.meta.outputs.commit }}
-          git checkout ${{ steps.meta.outputs.commit }}
+          curl -L -o chromium-linux.zip \
+          https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/${{ steps.snapshot.outputs.linux }}/chrome-linux.zip
 
-      - name: Generate build
-        shell: bash
+      - name: Download macOS build
         run: |
-          cd src
-          gn gen out/Release --args="is_debug=false use_ccache=true"
+          curl -L -o chromium-macos.zip \
+          https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac/${{ steps.snapshot.outputs.mac }}/chrome-mac.zip
 
-      - name: Build Chromium
-        shell: bash
+      - name: Download Windows build
         run: |
-          cd src
-          ninja -C out/Release chrome -j$(nproc || sysctl -n hw.ncpu)
+          curl -L -o chromium-win.zip \
+          https://commondatastorage.googleapis.com/chromium-browser-snapshots/Win/${{ steps.snapshot.outputs.win }}/chrome-win.zip
 
-      - name: Package build
-        shell: bash
+      - name: Prepare artifacts
         run: |
-          mkdir dist
+          mkdir release
+          mv chromium-linux.zip release/
+          mv chromium-macos.zip release/
+          mv chromium-win.zip release/
 
-          if [ "$RUNNER_OS" = "Linux" ]; then
-            tar -cJf dist/chromium-linux.tar.xz -C src/out/Release chrome
-          fi
-
-          if [ "$RUNNER_OS" = "macOS" ]; then
-            tar -cJf dist/chromium-macos.tar.xz -C src/out/Release chrome
-          fi
-
-          if [ "$RUNNER_OS" = "Windows" ]; then
-            powershell Compress-Archive src/out/Release/chrome.exe dist/chromium-win.zip
-          fi
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: chromium-${{ runner.os }}
-          path: dist/*
-
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Read metadata
-        id: meta
-        run: |
-          COMMIT=$(jq -r '.commit' artifacts/latest/build.json)
-          echo "commit=$COMMIT" >> "$GITHUB_OUTPUT"
-
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: release
-
+      # Publish release
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: chromium-${{ steps.meta.outputs.commit }}
           name: Chromium Nightly ${{ steps.meta.outputs.commit }}
           body: |
-            Automated Chromium nightly build
+            Chromium nightly build
 
             Commit: ${{ steps.meta.outputs.commit }}
-          files: release/**/*
+            Author: ${{ steps.meta.outputs.author }}
+            Commit Time: ${{ steps.meta.outputs.date }}
+
+            Builds:
+            - Linux
+            - macOS
+            - Windows
+          files: release/*
