@@ -23,22 +23,18 @@ jobs:
 
       - name: Fetch latest Chromium commit
         id: chromium
-        shell: bash
         run: |
           RESPONSE=$(curl -s https://chromium.googlesource.com/chromium/src/+log/main?format=JSON)
 
-          # Remove anti-XSSI prefix
           JSON=$(echo "$RESPONSE" | sed '1d')
 
           COMMIT=$(echo "$JSON" | jq -r '.log[0].commit')
-          AUTHOR=$(echo "$JSON" | jq -r '.log[0].author')
+          AUTHOR=$(echo "$JSON" | jq -r '.log[0].author.name')
           DATE=$(echo "$JSON" | jq -r '.log[0].committer.time')
 
-          {
-            echo "commit=$COMMIT"
-            echo "author=$AUTHOR"
-            echo "date=$DATE"
-          } >> "$GITHUB_OUTPUT"
+          echo "commit=$COMMIT" >> "$GITHUB_OUTPUT"
+          echo "author=$AUTHOR" >> "$GITHUB_OUTPUT"
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
 
       - name: Read existing commit
         id: current
