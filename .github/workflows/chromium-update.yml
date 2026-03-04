@@ -2,7 +2,7 @@ name: Chromium Update Tracker
 
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
@@ -61,11 +61,15 @@ jobs:
           EOF
 
       - name: Commit update
-        if: steps.chromium.outputs.commit != steps.current.outputs.current
         run: |
           git config user.name "chromium-bot"
           git config user.email "actions@github.com"
 
-          git add artifacts/latest/build.json
-          git commit -m "Update Chromium commit ${{ steps.chromium.outputs.commit }}" || exit 0
+          if [ "${{ steps.chromium.outputs.commit }}" != "${{ steps.current.outputs.current }}" ]; then
+            git add artifacts/latest/build.json
+            git commit -m "Update Chromium commit ${{ steps.chromium.outputs.commit }}"
+          else
+            git commit --allow-empty -m "No Chromium updates"
+          fi
+
           git push
