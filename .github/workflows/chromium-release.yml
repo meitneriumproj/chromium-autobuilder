@@ -1,0 +1,98 @@
+name: Chromium Nightly Release
+
+on:
+push:
+paths:
+- "artifacts/latest/build.json"
+workflow_dispatch:
+
+permissions:
+contents: write
+
+jobs:
+
+build-linux:
+runs-on: ubuntu-latest
+
+```
+steps:
+
+  - name: Checkout repo
+    uses: actions/checkout@v4
+
+  - name: Read build metadata
+    id: meta
+    run: |
+      COMMIT=$(jq -r '.commit' artifacts/latest/build.json)
+      echo "commit=$COMMIT" >> $GITHUB_OUTPUT
+
+  - name: Install build dependencies
+    run: |
+      sudo apt update
+      sudo apt install -y git python3 clang ninja-build pkg-config
+
+  - name: Fetch Chromium
+    run: |
+      git clone https://chromium.googlesource.com/chromium/src chromium
+      cd chromium
+      git checkout ${{ steps.meta.outputs.commit }}
+
+  - name: Generate build
+    run: |
+      cd chromium
+      gn gen out/Release
+
+  - name: Build Chromium
+    run: |
+      cd chromium
+      ninja -C out/Release chrome
+
+  - name: Package build
+    run: |
+      mkdir dist
+      tar -cJf dist/chromium-linux.tar.xz -C chromium/out/Release chrome
+
+  - name: Upload artifact
+    uses: actions/upload-artifact@v4
+    with:
+      name: chromium-linux
+      path: dist/chromium-linux.tar.xz
+```
+
+release:
+
+```
+needs: build-linux
+runs-on: ubuntu-latest
+
+steps:
+
+  - name: Checkout repo
+    uses: actions/checkout@v4
+
+  - name: Read metadata
+    id: meta
+    run: |
+      COMMIT=$(jq -r '.commit' artifacts/latest/build.json)
+      echo "commit=$COMMIT" >> $GITHUB_OUTPUT
+
+  - name: Download build artifact
+    uses: actions/download-artifact@v4
+    with:
+      name: chromium-linux
+      path: release
+
+  - name: Create GitHub release
+    uses: softprops/action-gh-release@v2
+    with:
+      tag_name: chromium-${{ steps.meta.outputs.commit }}
+      name: Chromium Nightly ${{ steps.meta.outputs.commit }}
+      body: |
+        Chromium nightly build
+
+        Commit: ${{ steps.meta.outputs.commit }}
+
+        Generated automatically.
+      files: |
+        release/chromium-linux.tar.xz
+```
