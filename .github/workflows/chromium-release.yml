@@ -100,7 +100,7 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: chromium-${{ steps.meta.outputs.version }}
+          tag_name: chromium-${{ steps.meta.outputs.version }}-${{ steps.meta.outputs.commit }}
           name: Chromium Nightly Build ${{ steps.meta.outputs.version }} ${{ steps.meta.outputs.commit }}
           body: |
             Chromium Nightly Build ${{ steps.meta.outputs.version }} ${{ steps.meta.outputs.commit }}
