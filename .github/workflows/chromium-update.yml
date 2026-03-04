@@ -87,7 +87,7 @@ jobs:
 
           if [ "${{ steps.chromium.outputs.commit }}" != "${{ steps.current.outputs.current }}" ]; then
             git add artifacts/latest/build.json
-            git commit -m "Chromium ${{ steps.version.outputs.version }} update"
+            git commit -m "Chromium ${{ steps.version.outputs.version }} update - commit ID ${{ steps.chromium.outputs.commit }}"
           else
             git commit --allow-empty -m "No chromium update found"
           fi
