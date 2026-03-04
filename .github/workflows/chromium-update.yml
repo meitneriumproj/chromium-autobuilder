@@ -3,7 +3,7 @@ name: Chromium Update Tracker
 on:
   schedule:
     - cron: "*/15 * * * *"
-    workflow_manager:
+  workflow_dispatch:
 
 permissions:
   contents: write
