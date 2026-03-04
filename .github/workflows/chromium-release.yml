@@ -56,11 +56,9 @@ steps:
     with:
       name: chromium-linux
       path: dist/chromium-linux.tar.xz
-```
 
 release:
 
-```
 needs: build-linux
 runs-on: ubuntu-latest
 
