@@ -38,11 +38,11 @@ jobs:
           echo "author=$AUTHOR" >> $GITHUB_OUTPUT
           echo "date=$DATE" >> $GITHUB_OUTPUT
 
-      # fetch VERSION file from Chromium repo
       - name: Fetch Chromium version
         id: version
         run: |
-          curl -s https://raw.githubusercontent.com/chromium/chromium/main/VERSION > VERSION
+          curl -s https://chromium.googlesource.com/chromium/src/+/main/chrome/VERSION?format=TEXT \
+          | base64 --decode > VERSION
 
           MAJOR=$(grep MAJOR VERSION | cut -d= -f2)
           MINOR=$(grep MINOR VERSION | cut -d= -f2)
@@ -50,6 +50,8 @@ jobs:
           PATCH=$(grep PATCH VERSION | cut -d= -f2)
 
           VERSION="$MAJOR.$MINOR.$BUILD.$PATCH"
+
+          echo "Detected version: $VERSION"
 
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
