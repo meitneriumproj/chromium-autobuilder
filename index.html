@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chromium Autobuilder</title>
+
+<link rel="stylesheet" href="web/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Chromium Autobuilder</h1>
+
+<div class="card">
+
+<h2>Latest Build</h2>
+
+<p><strong>Version:</strong> <span id="version">Loading...</span></p>
+<p><strong>Commit:</strong> <span id="commit">Loading...</span></p>
+<p><strong>Released:</strong> <span id="time">Loading...</span></p>
+
+</div>
+
+<div class="card downloads">
+
+<h2>Download</h2>
+
+<a id="downloadBtn" class="download-btn">
+Detecting your system...
+</a>
+
+<div class="all-downloads">
+
+<a id="win" class="small-btn">Windows</a>
+<a id="mac" class="small-btn">macOS</a>
+<a id="linux" class="small-btn">Linux</a>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+async function loadBuild() {
+
+const res = await fetch("artifacts/latest/build.json")
+const data = await res.json()
+
+document.getElementById("version").textContent = data.version
+document.getElementById("commit").textContent = data.commit
+document.getElementById("time").textContent = new Date(data.commit_time).toLocaleString()
+
+}
+
+function detectOS() {
+
+const ua = navigator.userAgent
+
+if (ua.includes("Windows")) return "windows"
+if (ua.includes("Mac")) return "mac"
+if (ua.includes("Linux")) return "linux"
+
+return "unknown"
+
+}
+
+function setupDownloads() {
+
+const base = "https://github.com/YOURORG/YOURREPO/releases/latest/download/"
+
+const win = base + "chromium-win.zip"
+const mac = base + "chromium-macos.zip"
+const linux = base + "chromium-linux.zip"
+
+document.getElementById("win").href = win
+document.getElementById("mac").href = mac
+document.getElementById("linux").href = linux
+
+const os = detectOS()
+
+const btn = document.getElementById("downloadBtn")
+
+if (os === "windows") {
+
+btn.href = win
+btn.textContent = "Download for Windows"
+
+}
+
+else if (os === "mac") {
+
+btn.href = mac
+btn.textContent = "Download for macOS"
+
+}
+
+else if (os === "linux") {
+
+btn.href = linux
+btn.textContent = "Download for Linux"
+
+}
+
+else {
+
+btn.textContent = "Download Chromium"
+
+}
+
+}
+
+loadBuild()
+setupDownloads()
+
+</script>
+
+</body>
+</html>
