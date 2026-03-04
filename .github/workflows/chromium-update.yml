@@ -21,10 +21,10 @@ jobs:
 
       - name: Install tools
         run: |
-          sudo apt-get update
-          sudo apt-get install -y jq curl
+          sudo apt update
+          sudo apt install -y jq curl git
 
-      - name: Fetch latest Chromium commit
+      - name: Fetch latest commit
         id: chromium
         run: |
           RESPONSE=$(curl -s https://chromium.googlesource.com/chromium/src/+log/main?format=JSON)
@@ -34,9 +34,24 @@ jobs:
           AUTHOR=$(echo "$JSON" | jq -r '.log[0].author.name')
           DATE=$(echo "$JSON" | jq -r '.log[0].committer.time')
 
-          echo "commit=$COMMIT" >> "$GITHUB_OUTPUT"
-          echo "author=$AUTHOR" >> "$GITHUB_OUTPUT"
-          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+          echo "commit=$COMMIT" >> $GITHUB_OUTPUT
+          echo "author=$AUTHOR" >> $GITHUB_OUTPUT
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+
+      # fetch VERSION file from Chromium repo
+      - name: Fetch Chromium version
+        id: version
+        run: |
+          curl -s https://raw.githubusercontent.com/chromium/chromium/main/VERSION > VERSION
+
+          MAJOR=$(grep MAJOR VERSION | cut -d= -f2)
+          MINOR=$(grep MINOR VERSION | cut -d= -f2)
+          BUILD=$(grep BUILD VERSION | cut -d= -f2)
+          PATCH=$(grep PATCH VERSION | cut -d= -f2)
+
+          VERSION="$MAJOR.$MINOR.$BUILD.$PATCH"
+
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Read current commit
         id: current
@@ -47,7 +62,7 @@ jobs:
             CURRENT=""
           fi
 
-          echo "current=$CURRENT" >> "$GITHUB_OUTPUT"
+          echo "current=$CURRENT" >> $GITHUB_OUTPUT
 
       - name: Update metadata
         if: steps.chromium.outputs.commit != steps.current.outputs.current
@@ -56,7 +71,7 @@ jobs:
 
           cat > artifacts/latest/build.json <<EOF
           {
-            "version": "chromium-nightly",
+            "version": "${{ steps.version.outputs.version }}",
             "commit": "${{ steps.chromium.outputs.commit }}",
             "author": "${{ steps.chromium.outputs.author }}",
             "commit_time": "${{ steps.chromium.outputs.date }}",
@@ -64,16 +79,12 @@ jobs:
           }
           EOF
 
-      - name: Commit result
+      - name: Commit update
+        if: steps.chromium.outputs.commit != steps.current.outputs.current
         run: |
           git config user.name "chromium-bot"
           git config user.email "actions@github.com"
 
-          if [ "${{ steps.chromium.outputs.commit }}" != "${{ steps.current.outputs.current }}" ]; then
-            git add artifacts/latest/build.json
-            git commit -m "Update Chromium commit ${{ steps.chromium.outputs.commit }}"
-          else
-            git commit --allow-empty -m "No Chromium updates"
-          fi
-
+          git add artifacts/latest/build.json
+          git commit -m "Chromium ${{ steps.version.outputs.version }} update"
           git push
