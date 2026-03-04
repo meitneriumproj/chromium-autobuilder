@@ -1,95 +1,90 @@
 name: Chromium Nightly Release
 
 on:
-push:
-paths:
-- "artifacts/latest/build.json"
-workflow_dispatch:
+  push:
+    paths:
+      - "artifacts/latest/build.json"
+  workflow_dispatch:
 
 permissions:
-contents: write
+  contents: write
 
 jobs:
 
-build-linux:
-runs-on: ubuntu-latest
+  build-linux:
+    runs-on: ubuntu-latest
 
-steps:
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-  - name: Checkout repo
-    uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y git python3 clang ninja-build jq curl
 
-  - name: Read build metadata
-    id: meta
-    run: |
-      COMMIT=$(jq -r '.commit' artifacts/latest/build.json)
-      echo "commit=$COMMIT" >> $GITHUB_OUTPUT
+      - name: Read build metadata
+        id: meta
+        run: |
+          COMMIT=$(jq -r '.commit' artifacts/latest/build.json)
+          echo "commit=$COMMIT" >> $GITHUB_OUTPUT
 
-  - name: Install build dependencies
-    run: |
-      sudo apt update
-      sudo apt install -y git python3 clang ninja-build pkg-config
+      - name: Fetch Chromium source
+        run: |
+          git clone https://chromium.googlesource.com/chromium/src chromium
+          cd chromium
+          git checkout ${{ steps.meta.outputs.commit }}
 
-  - name: Fetch Chromium
-    run: |
-      git clone https://chromium.googlesource.com/chromium/src chromium
-      cd chromium
-      git checkout ${{ steps.meta.outputs.commit }}
+      - name: Generate build
+        run: |
+          cd chromium
+          gn gen out/Release
 
-  - name: Generate build
-    run: |
-      cd chromium
-      gn gen out/Release
+      - name: Build Chromium
+        run: |
+          cd chromium
+          ninja -C out/Release chrome
 
-  - name: Build Chromium
-    run: |
-      cd chromium
-      ninja -C out/Release chrome
+      - name: Package build
+        run: |
+          mkdir dist
+          tar -cJf dist/chromium-linux.tar.xz -C chromium/out/Release chrome
 
-  - name: Package build
-    run: |
-      mkdir dist
-      tar -cJf dist/chromium-linux.tar.xz -C chromium/out/Release chrome
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: chromium-linux
+          path: dist/chromium-linux.tar.xz
 
-  - name: Upload artifact
-    uses: actions/upload-artifact@v4
-    with:
-      name: chromium-linux
-      path: dist/chromium-linux.tar.xz
 
-release:
+  release:
+    needs: build-linux
+    runs-on: ubuntu-latest
 
-needs: build-linux
-runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-steps:
+      - name: Read build metadata
+        id: meta
+        run: |
+          COMMIT=$(jq -r '.commit' artifacts/latest/build.json)
+          echo "commit=$COMMIT" >> $GITHUB_OUTPUT
 
-  - name: Checkout repo
-    uses: actions/checkout@v4
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: chromium-linux
+          path: release
 
-  - name: Read metadata
-    id: meta
-    run: |
-      COMMIT=$(jq -r '.commit' artifacts/latest/build.json)
-      echo "commit=$COMMIT" >> $GITHUB_OUTPUT
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: chromium-${{ steps.meta.outputs.commit }}
+          name: Chromium Nightly ${{ steps.meta.outputs.commit }}
+          body: |
+            Automated Chromium nightly build.
 
-  - name: Download build artifact
-    uses: actions/download-artifact@v4
-    with:
-      name: chromium-linux
-      path: release
-
-  - name: Create GitHub release
-    uses: softprops/action-gh-release@v2
-    with:
-      tag_name: chromium-${{ steps.meta.outputs.commit }}
-      name: Chromium Nightly ${{ steps.meta.outputs.commit }}
-      body: |
-        Chromium nightly build
-
-        Commit: ${{ steps.meta.outputs.commit }}
-
-        Generated automatically.
-      files: |
-        release/chromium-linux.tar.xz
-```
+            Commit: ${{ steps.meta.outputs.commit }}
+          files: |
+            release/chromium-linux.tar.xz
