@@ -2,8 +2,7 @@ name: Chromium Update Tracker
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
-  workflow_dispatch:
+    - cron: "* * * * *"
 
 permissions:
   contents: write
@@ -13,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Install tools
@@ -25,7 +24,6 @@ jobs:
         id: chromium
         run: |
           RESPONSE=$(curl -s https://chromium.googlesource.com/chromium/src/+log/main?format=JSON)
-
           JSON=$(echo "$RESPONSE" | sed '1d')
 
           COMMIT=$(echo "$JSON" | jq -r '.log[0].commit')
@@ -36,7 +34,7 @@ jobs:
           echo "author=$AUTHOR" >> "$GITHUB_OUTPUT"
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
 
-      - name: Read existing commit
+      - name: Read current commit
         id: current
         run: |
           if [ -f artifacts/latest/build.json ]; then
