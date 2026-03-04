@@ -1,7 +1,9 @@
-name: Chromium Nightly Release
+name: Chromium Release
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "artifacts/latest/build.json"
   workflow_dispatch:
@@ -19,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Install tools
@@ -27,36 +29,44 @@ jobs:
           sudo apt update
           sudo apt install -y jq curl unzip
 
-      # Read commit info
+      # Read metadata
       - name: Read build metadata
         id: meta
         run: |
+          VERSION=$(jq -r '.version' artifacts/latest/build.json)
           COMMIT=$(jq -r '.commit' artifacts/latest/build.json)
-          AUTHOR=$(jq -r '.author' artifacts/latest/build.json)
-          DATE=$(jq -r '.commit_time' artifacts/latest/build.json)
 
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "commit=$COMMIT" >> $GITHUB_OUTPUT
-          echo "author=$AUTHOR" >> $GITHUB_OUTPUT
-          echo "date=$DATE" >> $GITHUB_OUTPUT
 
-      # Prevent duplicate releases
-      - name: Check if release already exists
-        id: check
+      # Get latest release commit
+      - name: Get latest release commit
+        id: latest
         run: |
-          TAG="chromium-${{ steps.meta.outputs.commit }}"
-          EXISTS=$(gh release view "$TAG" --repo ${{ github.repository }} >/dev/null 2>&1 && echo "yes" || echo "no")
-          echo "exists=$EXISTS" >> $GITHUB_OUTPUT
+          LATEST=$(gh release view --json body -q '.body' 2>/dev/null | grep -o '[a-f0-9]\{40\}' | head -n1 || echo "")
+
+          echo "latest=$LATEST" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Stop if release exists
-        if: steps.check.outputs.exists == 'yes'
+      # Compare commits
+      - name: Compare commits
+        id: compare
         run: |
-          echo "Release already exists. Skipping."
+          if [ "${{ steps.meta.outputs.commit }}" = "${{ steps.latest.outputs.latest }}" ]; then
+            echo "same=true" >> $GITHUB_OUTPUT
+          else
+            echo "same=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Stop if commit unchanged
+        if: steps.compare.outputs.same == 'true'
+        run: |
+          echo "Commit already released. Skipping."
           exit 0
 
-      # Get latest snapshot numbers
-      - name: Fetch Chromium snapshot versions
+      # Get Chromium snapshot versions
+      - name: Get snapshot versions
         id: snapshot
         run: |
           LINUX=$(curl -s https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/LAST_CHANGE)
@@ -90,20 +100,18 @@ jobs:
           mv chromium-macos.zip release/
           mv chromium-win.zip release/
 
-      # Publish release
+      # Create release
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: chromium-${{ steps.meta.outputs.commit }}
-          name: Chromium Nightly ${{ steps.meta.outputs.commit }}
+          tag_name: chromium-${{ steps.meta.outputs.version }}
+          name: Chromium ${{ steps.meta.outputs.version }}
           body: |
-            Chromium nightly build
+            Chromium ${{ steps.meta.outputs.version }}
 
             Commit: ${{ steps.meta.outputs.commit }}
-            Author: ${{ steps.meta.outputs.author }}
-            Commit Time: ${{ steps.meta.outputs.date }}
 
-            Builds:
+            Platforms:
             - Linux
             - macOS
             - Windows
