@@ -24,7 +24,7 @@ function downloadLink(os) {
 
 ```
 const base =
-"https://github.com/YOURORG/YOURREPO/releases/latest/download/"
+"https://github.com/meitneriumproj/chromium-autobuilder/releases/latest/download/"
 
 if (os === "windows")
     return base + "chromium-win.exe"
