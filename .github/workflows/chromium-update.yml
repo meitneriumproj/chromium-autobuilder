@@ -3,7 +3,6 @@ name: Chromium Update Tracker
 on:
   schedule:
     - cron: "*/15 * * * *"
-  workflow_dispatch:
 
 permissions:
   contents: write
@@ -23,17 +22,22 @@ jobs:
 
       - name: Fetch latest Chromium commit
         id: chromium
+        shell: bash
         run: |
-          DATA=$(curl -s https://chromium.googlesource.com/chromium/src/+log/main?format=JSON)
-          CLEAN=$(echo "$DATA" | sed '1d')
+          RESPONSE=$(curl -s https://chromium.googlesource.com/chromium/src/+log/main?format=JSON)
 
-          COMMIT=$(echo "$CLEAN" | jq -r '.log[0].commit')
-          AUTHOR=$(echo "$CLEAN" | jq -r '.log[0].author')
-          DATE=$(echo "$CLEAN" | jq -r '.log[0].committer.time')
+          # Remove anti-XSSI prefix
+          JSON=$(echo "$RESPONSE" | sed '1d')
 
-          echo "commit=$COMMIT" >> $GITHUB_OUTPUT
-          echo "author=$AUTHOR" >> $GITHUB_OUTPUT
-          echo "date=$DATE" >> $GITHUB_OUTPUT
+          COMMIT=$(echo "$JSON" | jq -r '.log[0].commit')
+          AUTHOR=$(echo "$JSON" | jq -r '.log[0].author')
+          DATE=$(echo "$JSON" | jq -r '.log[0].committer.time')
+
+          {
+            echo "commit=$COMMIT"
+            echo "author=$AUTHOR"
+            echo "date=$DATE"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Read existing commit
         id: current
@@ -44,14 +48,14 @@ jobs:
             CURRENT=""
           fi
 
-          echo "current=$CURRENT" >> $GITHUB_OUTPUT
+          echo "current=$CURRENT" >> "$GITHUB_OUTPUT"
 
       - name: Update metadata
         if: steps.chromium.outputs.commit != steps.current.outputs.current
         run: |
           mkdir -p artifacts/latest
 
-          cat <<EOF > artifacts/latest/build.json
+          cat > artifacts/latest/build.json <<EOF
           {
             "version": "chromium-nightly",
             "commit": "${{ steps.chromium.outputs.commit }}",
@@ -68,7 +72,5 @@ jobs:
           git config user.email "actions@github.com"
 
           git add artifacts/latest/build.json
-
           git commit -m "Update Chromium commit ${{ steps.chromium.outputs.commit }}" || exit 0
-
           git push
