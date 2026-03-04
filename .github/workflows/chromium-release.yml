@@ -13,7 +13,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -25,12 +25,12 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt update
-          sudo apt install -y git clang ninja-build python3 jq curl
+          sudo apt install -y git python3 ninja-build clang jq curl ccache
 
       - name: Install dependencies (macOS)
         if: runner.os == 'macOS'
         run: |
-          brew install ninja jq
+          brew install ninja jq ccache
 
       - name: Install dependencies (Windows)
         if: runner.os == 'Windows'
@@ -44,25 +44,51 @@ jobs:
           COMMIT=$(jq -r '.commit' artifacts/latest/build.json)
           echo "commit=$COMMIT" >> "$GITHUB_OUTPUT"
 
-      - name: Clone Chromium
+      # ---------------------------
+      # Install depot_tools (fixes GN)
+      # ---------------------------
+
+      - name: Install depot_tools
         shell: bash
         run: |
-          git clone --depth 1 https://chromium.googlesource.com/chromium/src chromium
-          cd chromium
+          git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+          echo "$PWD/depot_tools" >> $GITHUB_PATH
+
+      # ---------------------------
+      # Fetch Chromium (fast)
+      # ---------------------------
+
+      - name: Fetch Chromium
+        shell: bash
+        run: |
+          fetch --nohooks chromium
+          cd src
           git fetch --depth 1 origin ${{ steps.meta.outputs.commit }}
           git checkout ${{ steps.meta.outputs.commit }}
+
+      # ---------------------------
+      # Generate build
+      # ---------------------------
 
       - name: Generate build
         shell: bash
         run: |
-          cd chromium
-          gn gen out/Release
+          cd src
+          gn gen out/Release --args="is_debug=false use_ccache=true"
+
+      # ---------------------------
+      # Build Chromium
+      # ---------------------------
 
       - name: Build Chromium
         shell: bash
         run: |
-          cd chromium
-          ninja -C out/Release chrome
+          cd src
+          ninja -C out/Release chrome -j$(nproc || sysctl -n hw.ncpu)
+
+      # ---------------------------
+      # Package build
+      # ---------------------------
 
       - name: Package build
         shell: bash
@@ -70,48 +96,19 @@ jobs:
           mkdir dist
 
           if [ "$RUNNER_OS" = "Linux" ]; then
-            tar -cJf dist/chromium-linux.tar.xz -C chromium/out/Release chrome
+            tar -cJf dist/chromium-linux.tar.xz -C src/out/Release chrome
           fi
 
           if [ "$RUNNER_OS" = "macOS" ]; then
-            tar -cJf dist/chromium-macos.tar.xz -C chromium/out/Release chrome
+            tar -cJf dist/chromium-macos.tar.xz -C src/out/Release chrome
           fi
 
           if [ "$RUNNER_OS" = "Windows" ]; then
-            powershell Compress-Archive chromium/out/Release/chrome.exe dist/chromium-win.zip
+            powershell Compress-Archive src/out/Release/chrome.exe dist/chromium-win.zip
           fi
 
-      - name: Upload build artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: chromium-${{ runner.os }}
           path: dist/*
-
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Read metadata
-        id: meta
-        run: |
-          COMMIT=$(jq -r '.commit' artifacts/latest/build.json)
-          echo "commit=$COMMIT" >> "$GITHUB_OUTPUT"
-
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: release
-
-      - name: Create release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: chromium-${{ steps.meta.outputs.commit }}
-          name: Chromium Nightly ${{ steps.meta.outputs.commit }}
-          body: |
-            Automated Chromium nightly build
-            Commit: ${{ steps.meta.outputs.commit }}
-          files: release/**/*
