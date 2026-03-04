@@ -1,7 +1,7 @@
 {
-  "version": "chromium-nightly",
-  "commit": "4b6284926c4274e86074f7853104fe7dcd996bee",
+  "version": "...",
+  "commit": "985184c8be02dea6611eeafbdb10d43dde90e954",
   "author": "chromium-autoroll",
-  "commit_time": "Wed Mar 04 03:32:18 2026",
+  "commit_time": "Wed Mar 04 03:38:31 2026",
   "status": "new"
 }
