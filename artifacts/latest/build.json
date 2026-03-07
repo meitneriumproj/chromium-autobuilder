@@ -1,7 +1,7 @@
 {
-  "version": "147.0.7724.0",
-  "commit": "7ecc427cd558871cf625715002e1e061a096dcc4",
-  "author": "ChromeOS Prod (Robot)",
-  "commit_time": "Sat Mar 07 14:52:18 2026",
+  "version": "147.0.7725.0",
+  "commit": "76f642a0399154a57bc82c0e5bd2288229790025",
+  "author": "chromium-autoroll",
+  "commit_time": "Sat Mar 07 15:26:09 2026",
   "status": "new"
 }
