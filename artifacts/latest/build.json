@@ -1,7 +1,7 @@
 {
-  "version": "147.0.7727.0",
-  "commit": "d81cdd547b4f9787fbbf4a88598e40812ea179f4",
-  "author": "chromium-autoroll",
-  "commit_time": "Tue Mar 10 02:43:58 2026",
+  "version": "148.0.7728.0",
+  "commit": "a424460b6118cf4234c4bbb521defeb6e6029bf3",
+  "author": "Masa Fujita",
+  "commit_time": "Tue Mar 10 04:23:20 2026",
   "status": "new"
 }
