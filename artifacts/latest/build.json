@@ -1,7 +1,7 @@
 {
   "version": "148.0.7732.0",
-  "commit": "61ed18ac0cd846f2cf068fe6f807138d48c9300f",
-  "author": "Yao Xiao",
-  "commit_time": "Thu Mar 12 14:36:04 2026",
+  "commit": "507b47d04713567525d438cc8609dfbb67d4a319",
+  "author": "chromium-internal-autoroll",
+  "commit_time": "Thu Mar 12 15:38:02 2026",
   "status": "new"
 }
