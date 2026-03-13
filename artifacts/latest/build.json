@@ -1,7 +1,7 @@
 {
-  "version": "148.0.7732.0",
-  "commit": "d6d47e1b5bafd03f01c9b3dc45011100a89f2679",
-  "author": "chromium-autoroll",
-  "commit_time": "Fri Mar 13 02:43:32 2026",
+  "version": "148.0.7733.0",
+  "commit": "32dfd22c9c24dd32cdbb7a4ef4b23623686e534b",
+  "author": "Guting Chen",
+  "commit_time": "Fri Mar 13 04:27:01 2026",
   "status": "new"
 }
