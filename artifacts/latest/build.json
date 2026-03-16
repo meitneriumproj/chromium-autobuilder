@@ -1,7 +1,7 @@
 {
   "version": "148.0.7735.0",
-  "commit": "cb9a593b255355e0a7aaaf17eb5b470a2469e44e",
-  "author": "Jason Leo",
-  "commit_time": "Mon Mar 16 01:02:40 2026",
+  "commit": "bc93162695fb8800fba878456d04c23fb90041c8",
+  "author": "chromium-internal-autoroll",
+  "commit_time": "Mon Mar 16 04:08:15 2026",
   "status": "new"
 }
