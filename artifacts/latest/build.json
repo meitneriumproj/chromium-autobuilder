@@ -1,7 +1,7 @@
 {
-  "version": "148.0.7739.0",
-  "commit": "6a1da59d09aedb97c29f3398934134d058c5e112",
-  "author": "chromium-autoroll",
-  "commit_time": "Tue Mar 17 23:53:48 2026",
+  "version": "148.0.7740.0",
+  "commit": "0f8d479eb8f0856d8a354f3dfeae592a3ecbffaa",
+  "author": "Andrew Moylan",
+  "commit_time": "Wed Mar 18 03:15:11 2026",
   "status": "new"
 }
