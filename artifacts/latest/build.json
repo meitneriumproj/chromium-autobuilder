@@ -1,7 +1,7 @@
 {
   "version": "148.0.7741.0",
-  "commit": "c6947c296f0177ebcb531f2d9e99ebdb7772b2f3",
-  "author": "chromium-autoroll",
-  "commit_time": "Wed Mar 18 23:46:47 2026",
+  "commit": "efb183700ad472caf8f5409d57ad25dd881c1f12",
+  "author": "chromium-internal-autoroll",
+  "commit_time": "Thu Mar 19 00:50:52 2026",
   "status": "new"
 }
