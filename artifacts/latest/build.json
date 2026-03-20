@@ -1,7 +1,7 @@
 {
   "version": "148.0.7745.0",
-  "commit": "f7ae74e0b878d681e5646447585bd7437a6b6ac4",
-  "author": "Andy Phan",
-  "commit_time": "Fri Mar 20 21:16:37 2026",
+  "commit": "f44d0d33cf4e5d33e8ea81a49585fd159cadb362",
+  "author": "chromium-internal-autoroll",
+  "commit_time": "Fri Mar 20 21:46:48 2026",
   "status": "new"
 }
