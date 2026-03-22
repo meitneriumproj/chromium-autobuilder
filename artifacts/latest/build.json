@@ -1,7 +1,7 @@
 {
-  "version": "148.0.7748.0",
-  "commit": "c5490a034e51b4cbe4f8ce52367579425dfeb8c8",
-  "author": "Tanmoy Mollik",
-  "commit_time": "Sun Mar 22 12:25:36 2026",
+  "version": "148.0.7749.0",
+  "commit": "a5d28bc2c8182bb9f336c14506963bd70cef6365",
+  "author": "Chrome Release Bot (LUCI)",
+  "commit_time": "Sun Mar 22 14:00:46 2026",
   "status": "new"
 }
