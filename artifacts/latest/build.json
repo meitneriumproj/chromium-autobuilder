@@ -1,7 +1,7 @@
 {
-  "version": "148.0.7754.0",
-  "commit": "c07ec339b5a680a108bee09f6fa27648980e3845",
-  "author": "chromium-autoroll",
-  "commit_time": "Wed Mar 25 13:48:22 2026",
+  "version": "148.0.7755.0",
+  "commit": "8cc49d9167006ac35d7e8f1d230abc3fefb70857",
+  "author": "Daniel Cheng",
+  "commit_time": "Wed Mar 25 14:50:21 2026",
   "status": "new"
 }
