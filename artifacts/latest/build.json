@@ -1,7 +1,7 @@
 {
   "version": "148.0.7757.0",
-  "commit": "71866d873bb9e87303f9009a188d429027fdd7a2",
-  "author": "Dominic Farolino",
-  "commit_time": "Thu Mar 26 15:13:36 2026",
+  "commit": "711b2435c7f04297b62a57826cb5da203f4c18a4",
+  "author": "chromium-internal-autoroll",
+  "commit_time": "Thu Mar 26 16:35:48 2026",
   "status": "new"
 }
