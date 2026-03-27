@@ -1,7 +1,7 @@
 {
-  "version": "148.0.7757.0",
-  "commit": "7db44f9284ccd28f1342e0e77edebcb0c1971d62",
-  "author": "Yue Liu",
-  "commit_time": "Fri Mar 27 02:11:12 2026",
+  "version": "148.0.7758.0",
+  "commit": "76bd6a46b1161d398fbdd47f80d539750bb18ab9",
+  "author": "luci-bisection@appspot.gserviceaccount.com",
+  "commit_time": "Fri Mar 27 04:39:16 2026",
   "status": "new"
 }
