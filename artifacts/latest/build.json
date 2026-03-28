@@ -1,7 +1,7 @@
 {
-  "version": "148.0.7760.0",
-  "commit": "5c04081f8645bde766e7b2606c9b427de4a23a0b",
-  "author": "Mitsuru Oshima",
-  "commit_time": "Sat Mar 28 13:48:21 2026",
+  "version": "148.0.7761.0",
+  "commit": "aaec9a3ad7c71cb7f81c47377ea0d46c83d4e745",
+  "author": "chromium-autoroll",
+  "commit_time": "Sat Mar 28 14:46:05 2026",
   "status": "new"
 }
