@@ -1,7 +1,7 @@
 {
-  "version": "148.0.7763.0",
-  "commit": "c33f2db3cfa78468847c3f849945a1f64c54a5c0",
-  "author": "chromium-autoroll",
-  "commit_time": "Sun Mar 29 23:49:05 2026",
+  "version": "148.0.7764.0",
+  "commit": "ecfe9558742b92460d3a9ae83a78dc04af8c4206",
+  "author": "Mingyu Lei",
+  "commit_time": "Mon Mar 30 03:30:12 2026",
   "status": "new"
 }
