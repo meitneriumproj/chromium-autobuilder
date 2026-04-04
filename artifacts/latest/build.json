@@ -1,7 +1,7 @@
 {
   "version": "148.0.7774.0",
-  "commit": "e37a20ac3ecc81c4f7ac2f97aa963617551d963a",
-  "author": "chromium-autoroll",
-  "commit_time": "Sat Apr 04 17:48:56 2026",
+  "commit": "bad6a015f63e4a8c73edf6cc0cb41d3f5d89dc46",
+  "author": "luci-bisection@appspot.gserviceaccount.com",
+  "commit_time": "Sat Apr 04 18:16:27 2026",
   "status": "new"
 }
