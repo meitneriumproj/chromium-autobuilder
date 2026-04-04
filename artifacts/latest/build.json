@@ -1,7 +1,7 @@
 {
-  "version": "148.0.7772.0",
-  "commit": "cf49e173538219735b3b412e5a87523e7306a2e2",
-  "author": "Jack Thiesen",
-  "commit_time": "Sat Apr 04 00:57:33 2026",
+  "version": "148.0.7773.0",
+  "commit": "7f3e072cb25369b9a9159c40aca90d6d2d9486e9",
+  "author": "Chrome Release Bot (LUCI)",
+  "commit_time": "Sat Apr 04 03:00:58 2026",
   "status": "new"
 }
