@@ -1,7 +1,7 @@
 {
   "version": "148.0.7774.0",
-  "commit": "dad030cd782c77f6d412866b42742e6d67816a35",
-  "author": "ChromeOS Prod (Robot)",
-  "commit_time": "Sat Apr 04 19:38:45 2026",
+  "commit": "a98f960f0d7ea62cd46225ffc3fd78ede092e8b5",
+  "author": "chromium-internal-autoroll",
+  "commit_time": "Sat Apr 04 20:19:11 2026",
   "status": "new"
 }
