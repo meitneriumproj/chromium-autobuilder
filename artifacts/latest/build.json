@@ -1,7 +1,7 @@
 {
   "version": "148.0.7776.0",
-  "commit": "6c73bb08cf97ce3401c74b515ec51f3757ef7a5b",
-  "author": "Chrome Release Bot (LUCI)",
-  "commit_time": "Sun Apr 05 14:01:13 2026",
+  "commit": "a48e15f43c447d1fd3a7af6a9f266db5c5ac1cf5",
+  "author": "chromium-autoroll",
+  "commit_time": "Sun Apr 05 14:51:17 2026",
   "status": "new"
 }
