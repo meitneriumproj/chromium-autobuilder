@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7780.0",
-  "commit": "b0e698cf86bd7309af069b75d5b7e4b0355164ca",
-  "author": "Wolfgang Beyer",
-  "commit_time": "Wed Apr 08 12:02:06 2026",
+  "version": "149.0.7781.0",
+  "commit": "d52b1f0ad83ac9263ffa6be46f65f4c5db782ef8",
+  "author": "Chrome Release Bot (LUCI)",
+  "commit_time": "Wed Apr 08 14:00:39 2026",
   "status": "new"
 }
