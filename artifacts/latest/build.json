@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7782.0",
-  "commit": "47ba93e2c5bab2eaa8ad7547295c45f4459e7550",
-  "author": "Adem Derinel",
-  "commit_time": "Thu Apr 09 12:04:39 2026",
+  "version": "149.0.7783.0",
+  "commit": "b6dbe5a9f69dff18c5acd3a78eb5385b39f3868e",
+  "author": "chromium-autoroll",
+  "commit_time": "Thu Apr 09 14:09:57 2026",
   "status": "new"
 }
