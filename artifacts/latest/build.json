@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7784.0",
-  "commit": "8c514ca33662e349f40cf94e26173a681982e593",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Fri Apr 10 12:33:07 2026",
+  "version": "149.0.7785.0",
+  "commit": "68c3eb9325a00283118a31c9a621db95aed2b768",
+  "author": "Chrome Release Bot (LUCI)",
+  "commit_time": "Fri Apr 10 14:00:47 2026",
   "status": "new"
 }
