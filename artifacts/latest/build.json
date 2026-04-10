@@ -1,7 +1,7 @@
 {
   "version": "149.0.7785.0",
-  "commit": "8fc129552ec3fc0706d8fe9af39f0a958f9890c5",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Fri Apr 10 17:57:22 2026",
+  "commit": "e4d345adc6f9a8430b3e718845f9e39f705df236",
+  "author": "Johannes Henkel",
+  "commit_time": "Fri Apr 10 19:07:43 2026",
   "status": "new"
 }
