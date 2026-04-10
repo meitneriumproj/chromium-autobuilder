@@ -1,7 +1,7 @@
 {
   "version": "149.0.7784.0",
-  "commit": "0bf68094656b8c3a11791aaec32a999be2256a55",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Fri Apr 10 10:34:13 2026",
+  "commit": "15bca9fe7420ca961ba6cd90fe1f81ca410d6b86",
+  "author": "Matthias Liedtke",
+  "commit_time": "Fri Apr 10 11:32:13 2026",
   "status": "new"
 }
