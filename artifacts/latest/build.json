@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7786.0",
-  "commit": "849b60ed9430fac8a8c9b8493b17cfafb2a66f69",
-  "author": "ChromeOS Prod (Robot)",
-  "commit_time": "Sat Apr 11 13:35:20 2026",
+  "version": "149.0.7787.0",
+  "commit": "6c881c2cb5aa1ad2ac065d9363bfd091b54591ac",
+  "author": "Chrome Release Bot (LUCI)",
+  "commit_time": "Sat Apr 11 14:00:41 2026",
   "status": "new"
 }
