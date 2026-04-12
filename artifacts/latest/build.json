@@ -1,7 +1,7 @@
 {
   "version": "149.0.7789.0",
-  "commit": "58557d84e40dafd49ce0ab8cca630311b3303520",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Sun Apr 12 15:33:27 2026",
+  "commit": "98045a580b8ea605234f61f00a5a532c28216f15",
+  "author": "chromium-internal-autoroll",
+  "commit_time": "Sun Apr 12 16:19:47 2026",
   "status": "new"
 }
