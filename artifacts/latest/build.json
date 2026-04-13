@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7789.0",
-  "commit": "2c6f6c4851cd59d50cdb4657a64066fb3026e64a",
-  "author": "chromium-internal-autoroll",
-  "commit_time": "Mon Apr 13 01:24:43 2026",
+  "version": "149.0.7790.0",
+  "commit": "00f0c9f4cb02bdb4d068f581848ea9518fd11964",
+  "author": "Nidhi Jaju",
+  "commit_time": "Mon Apr 13 04:24:28 2026",
   "status": "new"
 }
