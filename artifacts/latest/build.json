@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7792.0",
-  "commit": "9d95efdb7883e53cf7bda0afbf3383984914639e",
-  "author": "Patrick Meenan",
-  "commit_time": "Tue Apr 14 12:43:29 2026",
+  "version": "149.0.7793.0",
+  "commit": "3d97e889dfb4962ddb10317a95f53d3958780ecb",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Tue Apr 14 14:24:56 2026",
   "status": "new"
 }
