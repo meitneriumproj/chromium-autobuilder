@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7795.0",
-  "commit": "170c47067be83a2534102af3998446b0994925d6",
-  "author": "Wei Guo",
-  "commit_time": "Wed Apr 15 23:58:09 2026",
+  "version": "149.0.7796.0",
+  "commit": "b5434da9b5dd523f805651bfcde1269bf9de470e",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Thu Apr 16 05:45:52 2026",
   "status": "new"
 }
