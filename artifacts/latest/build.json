@@ -1,7 +1,7 @@
 {
   "version": "149.0.7802.0",
-  "commit": "2a3b985c72cd4be10e6dd607041bb2b012a505a0",
-  "author": "Qijiang Fan",
-  "commit_time": "Sun Apr 19 15:36:01 2026",
+  "commit": "fd5c71ba5c22942560517d86663ba2edd6d38bc7",
+  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
+  "commit_time": "Sun Apr 19 16:35:16 2026",
   "status": "new"
 }
