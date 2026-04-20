@@ -1,7 +1,7 @@
 {
   "version": "149.0.7802.0",
-  "commit": "09ad10de1421423cebd6867727d5c7d3c0a1c0eb",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Sun Apr 19 23:41:25 2026",
+  "commit": "2ad60f177b3350b443380eb9a4fc282a51187dfd",
+  "author": "Fumitoshi Ukai",
+  "commit_time": "Mon Apr 20 01:03:26 2026",
   "status": "new"
 }
