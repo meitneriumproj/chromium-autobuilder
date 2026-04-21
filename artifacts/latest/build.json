@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7804.0",
-  "commit": "d5858285d921e9db854c9fa0be5e28ba585dd545",
-  "author": "dpapad",
-  "commit_time": "Tue Apr 21 02:46:53 2026",
+  "version": "149.0.7805.0",
+  "commit": "c5123e2532d249f58c77d4844dec56988d02f337",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Tue Apr 21 05:00:44 2026",
   "status": "new"
 }
