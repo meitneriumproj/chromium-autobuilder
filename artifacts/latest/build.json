@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7808.0",
-  "commit": "0c57cbdd901bbd2dfac110ea489e06f144d8cad4",
-  "author": "Matt Stark",
-  "commit_time": "Thu Apr 23 01:09:03 2026",
+  "version": "149.0.7809.0",
+  "commit": "78c765e2d56f11c0ad2855ddcf9de0009e1238b1",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Thu Apr 23 04:21:39 2026",
   "status": "new"
 }
