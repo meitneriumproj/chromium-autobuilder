@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7811.0",
-  "commit": "48823d932b8c79ad7149e55f3fb593df19c4e1b5",
-  "author": "Timofey Chudakov",
-  "commit_time": "Fri Apr 24 12:06:45 2026",
+  "version": "149.0.7812.0",
+  "commit": "7c684649b8517ad92ad57e83b323fb152206a305",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Fri Apr 24 14:06:16 2026",
   "status": "new"
 }
