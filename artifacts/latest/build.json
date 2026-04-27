@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7812.0",
-  "commit": "782c626a290d711a85b50e85426123b386015350",
-  "author": "Thiabaud Engelbrecht",
-  "commit_time": "Mon Apr 27 16:10:44 2026",
+  "version": "149.0.7813.0",
+  "commit": "974d032a465edf08959681ed93a297ade2bd94c4",
+  "author": "chrome-official-brancher@chops-service-accounts.iam.gserviceaccount.com",
+  "commit_time": "Mon Apr 27 16:57:47 2026",
   "status": "new"
 }
