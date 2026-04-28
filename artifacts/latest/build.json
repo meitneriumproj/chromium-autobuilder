@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7814.0",
-  "commit": "a9d6a7900dd2f4ff90d46869f57fa7985d1cc1be",
-  "author": "Ken Russell",
-  "commit_time": "Tue Apr 28 13:16:39 2026",
+  "version": "149.0.7815.0",
+  "commit": "5e50eabf37724cc6bbf5091287174c885d4ef257",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Tue Apr 28 15:40:41 2026",
   "status": "new"
 }
