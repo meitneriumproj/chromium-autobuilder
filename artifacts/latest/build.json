@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7815.0",
-  "commit": "127c7a5192c05ac9bf51173c1d317328d292eebf",
-  "author": "Alexandra Pereira",
-  "commit_time": "Wed Apr 29 01:23:26 2026",
+  "version": "149.0.7816.0",
+  "commit": "3fb589ce15bdfd82b594eedd1619ae2a8bf07d33",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Wed Apr 29 04:53:06 2026",
   "status": "new"
 }
