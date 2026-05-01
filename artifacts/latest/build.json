@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7819.0",
-  "commit": "346d60b9d1cc07f3972869e029d409b11cc62a09",
-  "author": "WENHU CHENG",
-  "commit_time": "Fri May 01 01:23:26 2026",
+  "version": "149.0.7820.0",
+  "commit": "321318daed02959bc02b87fcd48d8f7117a1d233",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Fri May 01 05:06:12 2026",
   "status": "new"
 }
