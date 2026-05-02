@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7821.0",
-  "commit": "79c02b1681d2f6c700d59332f0069fc5ec508cda",
-  "author": "Sophie Chang",
-  "commit_time": "Sat May 02 00:07:45 2026",
+  "version": "149.0.7822.0",
+  "commit": "c6a46050f35af6404997e1ee78fe9ac12108f22c",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Sat May 02 03:38:38 2026",
   "status": "new"
 }
