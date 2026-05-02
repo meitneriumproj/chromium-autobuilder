@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7822.0",
-  "commit": "1262aed600b7dc7541a60c4ed69fc53f85aafd54",
-  "author": "Xiaohan Wang",
-  "commit_time": "Sat May 02 13:15:56 2026",
+  "version": "149.0.7823.0",
+  "commit": "8f3c77b7cb67c1bbc7b1c42f2c93b6ba4ecc0266",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Sat May 02 14:29:43 2026",
   "status": "new"
 }
