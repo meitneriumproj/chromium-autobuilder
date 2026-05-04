@@ -1,7 +1,7 @@
 {
   "version": "149.0.7826.0",
-  "commit": "0c2129fdeb546ea2d90fa1d77d9e078cb818af13",
-  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
-  "commit_time": "Mon May 04 09:10:48 2026",
+  "commit": "21409d58ff634b27a4637ad7dbf78d17cb64cc6c",
+  "author": "Arthur Milchior",
+  "commit_time": "Mon May 04 11:13:58 2026",
   "status": "new"
 }
