@@ -1,7 +1,7 @@
 {
-  "version": "149.0.7827.0",
-  "commit": "9f3e9aaccba63bd2ec30334e45e0bfd07ebcc8f1",
-  "author": "Edgar Aguilar",
-  "commit_time": "Tue May 05 01:08:15 2026",
+  "version": "150.0.7828.0",
+  "commit": "9bfaaaa261f512bfab7962d046f75fb5688092de",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Tue May 05 04:11:18 2026",
   "status": "new"
 }
