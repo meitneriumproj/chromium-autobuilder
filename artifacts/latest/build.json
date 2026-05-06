@@ -1,7 +1,7 @@
 {
-  "version": "150.0.7828.0",
-  "commit": "69247c87da7aa477f51e7b1c16681117f10caaba",
-  "author": "Brandon Fong",
-  "commit_time": "Wed May 06 01:09:34 2026",
+  "version": "150.0.7829.0",
+  "commit": "9610b76dc3c10106bad6fc51f81c08d27535b3ab",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Wed May 06 03:48:25 2026",
   "status": "new"
 }
