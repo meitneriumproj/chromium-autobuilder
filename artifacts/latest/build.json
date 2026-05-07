@@ -1,7 +1,7 @@
 {
-  "version": "150.0.7830.0",
-  "commit": "a7864a7e22363b13aa28060e91abf7472efd17e3",
-  "author": "Juan Mojica",
-  "commit_time": "Thu May 07 00:01:43 2026",
+  "version": "150.0.7831.0",
+  "commit": "5fe8a92d3d3ec460fa8399c958f3e57d1dbed725",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Thu May 07 03:47:39 2026",
   "status": "new"
 }
