@@ -1,7 +1,7 @@
 {
-  "version": "150.0.7831.0",
-  "commit": "ee0073c10e061f70b19b869926c35017f209a892",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Thu May 07 13:10:42 2026",
+  "version": "150.0.7832.0",
+  "commit": "1ebeccba01132bb224aa4c0d38e5bfbc534f2b16",
+  "author": "Dominique Fauteux-Chapleau",
+  "commit_time": "Thu May 07 15:37:17 2026",
   "status": "new"
 }
