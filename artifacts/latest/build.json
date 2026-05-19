@@ -1,7 +1,7 @@
 {
-  "version": "150.0.7846.0",
-  "commit": "b7eb16961bd92b63aeed6bfbc0debcbdd70c94c7",
-  "author": "Jilin Yang",
-  "commit_time": "Tue May 19 00:14:03 2026",
+  "version": "150.0.7847.0",
+  "commit": "ae4e0fdf9a4bf7349fcb5667f8b0cc158d4fdc81",
+  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
+  "commit_time": "Tue May 19 04:36:22 2026",
   "status": "new"
 }
