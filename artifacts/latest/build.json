@@ -1,7 +1,7 @@
 {
-  "version": "150.0.7847.0",
-  "commit": "e871704898a2e1b4923b6edc7afd56aa613d3282",
-  "author": "Nan Lin",
-  "commit_time": "Tue May 19 14:13:28 2026",
+  "version": "150.0.7848.0",
+  "commit": "eb341f29d1c1113ad96d0fb2b1d34a59089928bc",
+  "author": "chromium-autoroll",
+  "commit_time": "Tue May 19 23:33:59 2026",
   "status": "new"
 }
