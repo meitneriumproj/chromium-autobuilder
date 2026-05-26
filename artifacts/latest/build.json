@@ -1,7 +1,7 @@
 {
-  "version": "150.0.7859.0",
-  "commit": "76477454cbfd78cc804d7e7310db346548ba65cc",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Mon May 25 23:29:51 2026",
+  "version": "150.0.7860.0",
+  "commit": "aec9d8303258530cec08a193a482b31dc098cca7",
+  "author": "yoshiki iguchi",
+  "commit_time": "Tue May 26 05:42:28 2026",
   "status": "new"
 }
