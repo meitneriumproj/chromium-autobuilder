@@ -1,7 +1,7 @@
 {
-  "version": "150.0.7865.0",
-  "commit": "8770e4eb90fa84f541b2e9d1892b525f1ff37423",
-  "author": "Mustaq Ahmed",
-  "commit_time": "Fri May 29 00:08:03 2026",
+  "version": "150.0.7866.0",
+  "commit": "7447926f1800832b57faac2bd69231f1d95e9e01",
+  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
+  "commit_time": "Fri May 29 04:42:32 2026",
   "status": "new"
 }
