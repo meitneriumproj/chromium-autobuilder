@@ -1,7 +1,7 @@
 {
-  "version": "150.0.7870.0",
-  "commit": "8421cc23bc96036b2a1b0cd6544a26355179b075",
-  "author": "Chrome Metrics Config Manager",
-  "commit_time": "Mon Jun 01 12:19:37 2026",
+  "version": "150.0.7871.0",
+  "commit": "2ddb02e5c0d1a1f4b5723980a3653a0dea307244",
+  "author": "Dmytro Yeroshkin",
+  "commit_time": "Mon Jun 01 18:20:51 2026",
   "status": "new"
 }
