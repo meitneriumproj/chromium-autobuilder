@@ -1,7 +1,7 @@
 {
-  "version": "151.0.7872.0",
-  "commit": "3fd4d5ff01b0168919ead7486696a723d7b07fa0",
-  "author": "Aviv Kiss",
-  "commit_time": "Wed Jun 03 02:10:52 2026",
+  "version": "151.0.7873.0",
+  "commit": "167924ef55e6dd45c3a273dc1e99309d8f7be8ee",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Wed Jun 03 07:12:18 2026",
   "status": "new"
 }
