@@ -1,7 +1,7 @@
 {
   "version": "151.0.7874.0",
-  "commit": "07e7ffab0378f33c5fe42824ed4aaa9429a26b0e",
-  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
-  "commit_time": "Thu Jun 04 09:09:40 2026",
+  "commit": "b9bb2a8c34c4f03eb90064a1f5d773d67cf94f54",
+  "author": "Arthur Sonzogni",
+  "commit_time": "Thu Jun 04 12:13:34 2026",
   "status": "new"
 }
