@@ -1,7 +1,7 @@
 {
   "version": "151.0.7876.0",
-  "commit": "e294a43a5dd4d7f0c2a6f383cfa1f01875a4adfa",
-  "author": "Emmanuele Bassi",
-  "commit_time": "Fri Jun 05 06:20:12 2026",
+  "commit": "3b896e6bd479ace00cb8f591bd5b8905a94459a1",
+  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
+  "commit_time": "Fri Jun 05 10:29:01 2026",
   "status": "new"
 }
