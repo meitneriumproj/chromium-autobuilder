@@ -1,7 +1,7 @@
 {
-  "version": "151.0.7882.0",
-  "commit": "55e6d7b105b0bb998db867e13d99333e79678780",
-  "author": "Andreas Haas",
-  "commit_time": "Mon Jun 08 09:55:58 2026",
+  "version": "151.0.7883.0",
+  "commit": "044f8dad33cbdc9552686824b562220ff96088ce",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Mon Jun 08 14:15:06 2026",
   "status": "new"
 }
