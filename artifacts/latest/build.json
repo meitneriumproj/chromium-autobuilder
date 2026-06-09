@@ -1,7 +1,7 @@
 {
-  "version": "151.0.7883.0",
-  "commit": "d8339dc8c21d5035e27a95acb7c3119f2c76ec62",
-  "author": "Eleanor Lee",
-  "commit_time": "Tue Jun 09 00:13:56 2026",
+  "version": "151.0.7884.0",
+  "commit": "7fbb8ca02535c2d466cb5f0d533b10fa0794022b",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Tue Jun 09 04:38:27 2026",
   "status": "new"
 }
