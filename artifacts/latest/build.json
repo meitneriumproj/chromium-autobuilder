@@ -1,7 +1,7 @@
 {
-  "version": "151.0.7884.0",
-  "commit": "c8ab2abe2413305960994173d30cd42564acb8d8",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Tue Jun 09 11:37:28 2026",
+  "version": "151.0.7885.0",
+  "commit": "89068056e61f4d2d81d3182fb3d3f6f4e30732b5",
+  "author": "Briana McClure",
+  "commit_time": "Tue Jun 09 14:04:10 2026",
   "status": "new"
 }
