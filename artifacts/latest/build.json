@@ -1,7 +1,7 @@
 {
-  "version": "151.0.7889.0",
-  "commit": "16fea40c0b7b985fde7ccced70a7131dd817ffce",
-  "author": "Eva Su",
-  "commit_time": "Fri Jun 12 00:05:57 2026",
+  "version": "151.0.7890.0",
+  "commit": "242a04c867e0486e1f26f0f3bc0c42f23b9da347",
+  "author": "chrome-official-brancher@chops-service-accounts.iam.gserviceaccount.com",
+  "commit_time": "Fri Jun 12 03:00:53 2026",
   "status": "new"
 }
