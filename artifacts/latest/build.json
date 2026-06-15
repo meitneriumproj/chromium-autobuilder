@@ -1,7 +1,7 @@
 {
-  "version": "151.0.7892.0",
-  "commit": "4af98b9b56f054fcceba68c7f0e02421c7d4775d",
-  "author": "Keigo Oka",
-  "commit_time": "Mon Jun 15 01:52:37 2026",
+  "version": "151.0.7893.0",
+  "commit": "221b38314fe6655fe831e7470d1148c573fbb757",
+  "author": "chrome-official-brancher@chops-service-accounts.iam.gserviceaccount.com",
+  "commit_time": "Mon Jun 15 07:30:59 2026",
   "status": "new"
 }
