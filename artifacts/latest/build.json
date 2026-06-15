@@ -1,7 +1,7 @@
 {
   "version": "151.0.7893.0",
-  "commit": "221b38314fe6655fe831e7470d1148c573fbb757",
-  "author": "chrome-official-brancher@chops-service-accounts.iam.gserviceaccount.com",
-  "commit_time": "Mon Jun 15 07:30:59 2026",
+  "commit": "00ace07469e0036532b739c7ad276581760a8787",
+  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
+  "commit_time": "Mon Jun 15 13:34:02 2026",
   "status": "new"
 }
