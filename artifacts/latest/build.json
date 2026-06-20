@@ -1,7 +1,7 @@
 {
-  "version": "151.0.7902.0",
-  "commit": "11572faeda4de4c3eca058b992aa31bf423fe19c",
-  "author": "chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com",
-  "commit_time": "Sat Jun 20 01:51:43 2026",
+  "version": "151.0.7903.0",
+  "commit": "766f8201ec214c2c93a9f4cd74c47159e48b1b47",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Sat Jun 20 06:30:48 2026",
   "status": "new"
 }
