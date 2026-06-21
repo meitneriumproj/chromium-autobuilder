@@ -1,7 +1,7 @@
 {
-  "version": "151.0.7904.0",
-  "commit": "b4088183e168e849b0fe214593789f4b78d9167d",
-  "author": "Achuith Bhandarkar",
-  "commit_time": "Sun Jun 21 00:01:49 2026",
+  "version": "151.0.7905.0",
+  "commit": "a300f4fbf804b58c48733c4f597fd8e561010013",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Sun Jun 21 05:04:22 2026",
   "status": "new"
 }
