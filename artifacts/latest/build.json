@@ -1,7 +1,7 @@
 {
-  "version": "151.0.7907.0",
-  "commit": "4ecd0b8aa6d032c0c0d74c51ea0e2c0ce307dba0",
-  "author": "Shweta Bindal",
-  "commit_time": "Mon Jun 22 08:45:06 2026",
+  "version": "151.0.7908.0",
+  "commit": "4919acdbed65470a4157bab67e6d4b95ccb1848b",
+  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
+  "commit_time": "Mon Jun 22 14:09:25 2026",
   "status": "new"
 }
