@@ -1,7 +1,7 @@
 {
   "version": "151.0.7912.0",
-  "commit": "d6ace8beec4810117123fdc4b25c8ccf3c4c3006",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Wed Jun 24 16:01:40 2026",
+  "commit": "bbeeb1cf0fc57e729f0b0bf6909d748386f67186",
+  "author": "Nate Chapin",
+  "commit_time": "Wed Jun 24 22:55:08 2026",
   "status": "new"
 }
