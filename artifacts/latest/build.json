@@ -1,7 +1,7 @@
 {
   "version": "151.0.7916.0",
-  "commit": "70faa9983724664895b564e2f7f34a44cfa777a8",
-  "author": "Etienne Dechamps",
-  "commit_time": "Fri Jun 26 14:45:16 2026",
+  "commit": "ba5910ba60a025336a346b711ea6abd0e2bfaa54",
+  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
+  "commit_time": "Fri Jun 26 16:50:39 2026",
   "status": "new"
 }
