@@ -1,7 +1,7 @@
 {
-  "version": "151.0.7916.0",
-  "commit": "777acb4e589c2df99b35f69e54dae3868a1a0ada",
-  "author": "Sky Malice",
-  "commit_time": "Sat Jun 27 01:18:52 2026",
+  "version": "151.0.7917.0",
+  "commit": "15cea55209eec1f7f9156b257cd4e397e9ea93a9",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Sat Jun 27 05:08:37 2026",
   "status": "new"
 }
