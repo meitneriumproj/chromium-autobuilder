@@ -1,7 +1,7 @@
 {
   "version": "151.0.7920.0",
-  "commit": "ea7c0c4214552da42d672d538607722b97a5a962",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Sun Jun 28 19:52:27 2026",
+  "commit": "61355c93e7c7fb3b617d5bf3951b96195ad28643",
+  "author": "Dmitry Gozman",
+  "commit_time": "Sun Jun 28 21:15:30 2026",
   "status": "new"
 }
