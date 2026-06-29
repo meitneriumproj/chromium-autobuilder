@@ -1,7 +1,7 @@
 {
   "version": "151.0.7922.0",
-  "commit": "cae809b422d46da4405120d0e6f9aa267c83213c",
-  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
-  "commit_time": "Mon Jun 29 20:21:38 2026",
+  "commit": "e8830b665d6e1512674fadbd7d3ea89b763122bd",
+  "author": "David Pennington",
+  "commit_time": "Mon Jun 29 21:51:48 2026",
   "status": "new"
 }
