@@ -1,7 +1,7 @@
 {
-  "version": "151.0.7921.0",
-  "commit": "05808585a450bdf085c123ffd7b238c849b766cb",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Mon Jun 29 12:08:40 2026",
+  "version": "151.0.7922.0",
+  "commit": "5f4aec5b878d1548bacc82dbba72716b802e30b2",
+  "author": "Chirag Arora",
+  "commit_time": "Mon Jun 29 16:05:01 2026",
   "status": "new"
 }
