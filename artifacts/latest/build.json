@@ -1,7 +1,7 @@
 {
-  "version": "152.0.7925.0",
-  "commit": "10f5e99b1a5b9c1aeb952d662430c1ec676106e7",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Thu Jul 02 00:15:01 2026",
+  "version": "152.0.7926.0",
+  "commit": "67949328e19989e6c9fa0fec4bdb3dcf80ff38f9",
+  "author": "Daniel Rubery",
+  "commit_time": "Thu Jul 02 07:28:40 2026",
   "status": "new"
 }
