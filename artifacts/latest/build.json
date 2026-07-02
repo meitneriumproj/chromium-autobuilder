@@ -1,7 +1,7 @@
 {
-  "version": "152.0.7926.0",
-  "commit": "c1d4125a1ab8e4897b6c861f0c6816686db95f6d",
-  "author": "Etienne Bergeron",
-  "commit_time": "Thu Jul 02 14:56:18 2026",
+  "version": "152.0.7927.0",
+  "commit": "58fd582aa09f410fa3fb7db8bba06e096adedbf8",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Thu Jul 02 16:59:29 2026",
   "status": "new"
 }
