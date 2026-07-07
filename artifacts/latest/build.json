@@ -1,7 +1,7 @@
 {
-  "version": "152.0.7936.0",
-  "commit": "3b063e74c04976f8097ff6378a5c740f10167f70",
-  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
-  "commit_time": "Tue Jul 07 01:22:15 2026",
+  "version": "152.0.7937.0",
+  "commit": "1542192f0f59e732f648ef5e3a2fd197f1477b2f",
+  "author": "hiroki oshima",
+  "commit_time": "Tue Jul 07 05:20:07 2026",
   "status": "new"
 }
