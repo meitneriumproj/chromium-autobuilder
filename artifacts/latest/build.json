@@ -1,7 +1,7 @@
 {
-  "version": "152.0.7944.0",
-  "commit": "76e56a93297aff4d06e8fd4b9cb2f8df1f61b7d3",
-  "author": "Qiu Jianlin",
-  "commit_time": "Fri Jul 10 23:30:13 2026",
+  "version": "152.0.7945.0",
+  "commit": "0bef2f5e05c6f2222932ebc186be5a3dcd4c141b",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Sat Jul 11 04:11:23 2026",
   "status": "new"
 }
