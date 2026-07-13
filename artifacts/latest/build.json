@@ -1,7 +1,7 @@
 {
   "version": "152.0.7948.0",
-  "commit": "28ae200765befefed46256820531c58cc2f7d2b1",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Mon Jul 13 04:41:36 2026",
+  "commit": "75f346fc266b891cb939b1bb2a390ab6dad5028a",
+  "author": "Takashi Nakayama",
+  "commit_time": "Mon Jul 13 07:56:12 2026",
   "status": "new"
 }
