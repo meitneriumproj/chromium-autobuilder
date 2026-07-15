@@ -1,7 +1,7 @@
 {
   "version": "152.0.7953.0",
-  "commit": "88b13061eeed7586c343e30b22051e4c61fd02e3",
-  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
-  "commit_time": "Wed Jul 15 20:39:11 2026",
+  "commit": "860fff5b4713024ec333cab2a65f22452badc723",
+  "author": "Liang Zhao",
+  "commit_time": "Wed Jul 15 21:38:29 2026",
   "status": "new"
 }
