@@ -1,7 +1,7 @@
 {
   "version": "152.0.7955.0",
-  "commit": "7bd8c34b3b229ac0803d8f4815ebe37c6afe021d",
-  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
-  "commit_time": "Thu Jul 16 22:29:09 2026",
+  "commit": "cedf458ca3c5012e5019f6a4d1cf6bae9178c026",
+  "author": "James Hawkins",
+  "commit_time": "Thu Jul 16 23:24:57 2026",
   "status": "new"
 }
