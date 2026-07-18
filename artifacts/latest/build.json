@@ -1,7 +1,7 @@
 {
-  "version": "152.0.7957.0",
-  "commit": "1340451d0a0dc4fea84b796e74e9299236f034dc",
-  "author": "Jennifer Serrano",
-  "commit_time": "Sat Jul 18 00:00:04 2026",
+  "version": "152.0.7958.0",
+  "commit": "10fec3bf07fec1fd60b813f5dffac8d86a754162",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Sat Jul 18 03:27:28 2026",
   "status": "new"
 }
