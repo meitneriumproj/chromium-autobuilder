@@ -1,7 +1,7 @@
 {
   "version": "152.0.7963.0",
-  "commit": "761a8bf37f3d6974d6998604c1bfa807f6082b99",
-  "author": "Kevin Babbitt",
-  "commit_time": "Mon Jul 20 18:56:33 2026",
+  "commit": "558ee5f9b118fcdd964a62deab42bb7d076e5209",
+  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
+  "commit_time": "Mon Jul 20 20:28:37 2026",
   "status": "new"
 }
