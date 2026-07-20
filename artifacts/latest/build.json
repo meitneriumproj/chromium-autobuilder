@@ -1,7 +1,7 @@
 {
-  "version": "152.0.7962.0",
-  "commit": "b1654fb59868272d03baa03b1a4fe36f725cc1f8",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Mon Jul 20 13:04:12 2026",
+  "version": "152.0.7963.0",
+  "commit": "c7a9e2685c11b73943491da10066de215c22c249",
+  "author": "Sylvain Defresne",
+  "commit_time": "Mon Jul 20 15:18:20 2026",
   "status": "new"
 }
