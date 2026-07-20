@@ -1,7 +1,7 @@
 {
-  "version": "152.0.7961.0",
-  "commit": "4afd4cb48b6f5ab7a45205f5e7ca0a4d276acffe",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Mon Jul 20 01:08:49 2026",
+  "version": "152.0.7962.0",
+  "commit": "c2ebc1286d65733e61b498504d32046e13fbdcdd",
+  "author": "Wenbo Jie",
+  "commit_time": "Mon Jul 20 04:43:21 2026",
   "status": "new"
 }
