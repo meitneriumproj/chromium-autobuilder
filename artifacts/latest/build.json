@@ -1,7 +1,7 @@
 {
   "version": "152.0.7971.0",
-  "commit": "3c4366f03f0bf40a2639a27bd067b64bc63b9f9e",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Fri Jul 24 18:10:17 2026",
+  "commit": "465d50b0e35c48e74305779719099ef300be828a",
+  "author": "Zac Moreland",
+  "commit_time": "Fri Jul 24 19:48:47 2026",
   "status": "new"
 }
