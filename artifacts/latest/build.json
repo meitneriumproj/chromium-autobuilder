@@ -1,7 +1,7 @@
 {
   "version": "152.0.7970.0",
-  "commit": "b5e125696a968f01ff8f786798a32e42230f688d",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Fri Jul 24 11:06:58 2026",
+  "commit": "8b7fc0dc99d5c2af64ecd37943f9f9456da769b3",
+  "author": "Corentin Wallez",
+  "commit_time": "Fri Jul 24 12:54:39 2026",
   "status": "new"
 }
