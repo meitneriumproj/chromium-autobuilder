@@ -1,7 +1,7 @@
 {
-  "version": "152.0.7977.0",
-  "commit": "695e2c1f3e5845a6a7f3ed7beacaf4e4fe93b572",
-  "author": "chromium-internal-autoroll@skia-corp.google.com.iam.gserviceaccount.com",
-  "commit_time": "Tue Jul 28 01:05:28 2026",
+  "version": "153.0.7978.0",
+  "commit": "ac3e712a024e6d6c585ef4f956d791272ae7e85a",
+  "author": "Taiyo Mizuhashi",
+  "commit_time": "Tue Jul 28 04:19:51 2026",
   "status": "new"
 }
