@@ -1,7 +1,7 @@
 {
-  "version": "153.0.7978.0",
-  "commit": "d7a95acf2a5af92b6d94bff01a6897c01df4dbb1",
-  "author": "Ari Chivukula",
-  "commit_time": "Wed Jul 29 01:08:17 2026",
+  "version": "153.0.7979.0",
+  "commit": "f3c7e9680ab83880a73ed4d461b48cb9051cf719",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Wed Jul 29 04:29:00 2026",
   "status": "new"
 }
