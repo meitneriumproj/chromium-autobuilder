@@ -1,7 +1,7 @@
 {
-  "version": "153.0.7990.0",
-  "commit": "e8d5312d4d83e9376fdb096421677481ed2c2bf2",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Tue Aug 04 01:44:30 2026",
+  "version": "153.0.7991.0",
+  "commit": "e2337d4240f19a6019b4277e88e909f281944334",
+  "author": "Wenbin Zhang",
+  "commit_time": "Tue Aug 04 05:26:23 2026",
   "status": "new"
 }
