@@ -1,7 +1,7 @@
 {
-  "version": "153.0.7991.0",
-  "commit": "a00d144abf6ceae89527da0e3fdaabe4b4ee5a0e",
-  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
-  "commit_time": "Tue Aug 04 12:40:46 2026",
+  "version": "153.0.7992.0",
+  "commit": "f74ce465a2e66adbbe046e9b5c76e0c634d31149",
+  "author": "Ali Kadum",
+  "commit_time": "Tue Aug 04 15:12:15 2026",
   "status": "new"
 }
