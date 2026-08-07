@@ -1,7 +1,7 @@
 {
   "version": "153.0.7997.0",
-  "commit": "9402b91e6fd0d0b9b1ea8aa44821d8048e15e77d",
-  "author": "luci-bisection@appspot.gserviceaccount.com",
-  "commit_time": "Fri Aug 07 20:09:48 2026",
+  "commit": "f13f0076f0b8a324eec17769b75a1abcc2df43bf",
+  "author": "chromium-autoroll@skia-public.iam.gserviceaccount.com",
+  "commit_time": "Fri Aug 07 21:00:16 2026",
   "status": "new"
 }
